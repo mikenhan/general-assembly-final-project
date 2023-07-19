@@ -50,12 +50,12 @@ def check_website_status(url):
         csv_file_1 = f"{response_time_folder}/{domain_name}.csv"
         # had to use not. otherwise new file does not add headers
         response_time_file = not os.path.isfile(csv_file_1)
-
+        # always open in append mode
         with open(csv_file_1, "a", newline='') as file1:
             writer = csv.writer(file1)
             if response_time_file:  # If file does not exist we will create it with the header row
                 writer.writerow(['time', 'response_time'])
-
+            # write data to each row
             writer.writerow([time.strftime("%Y-%m-%d %H:%M:%S"),
                             response_time])
 
@@ -65,10 +65,11 @@ def check_website_status(url):
         with open(csv_file_2, 'a', newline='') as file2:
             writer = csv.writer(file2)
             if response_file:
-                writer.writerow(['time', 'response'])
+                writer.writerow(['time', 'response', 'overall'])
 
+            overall = 1 if response.status_code == 200 else 0
             writer.writerow([time.strftime("%Y-%m-%d %H:%M:%S"),
-                            response.status_code])
+                            response.status_code, overall])
 
     except requests.exceptions.RequestException:
         print(f"{url} is down.")  # print this in case of unreachable URL

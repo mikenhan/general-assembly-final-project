@@ -14,19 +14,15 @@ st.write(
 )
 
 # Create the response time bar chart using Streamlit
-
-
 def response_time(df):
     st.title("General Assembly Website Reponse Time")
     st.text("Scroll to zoom in and out")
 
-    general_assembly['time'] = pd.to_datetime(general_assembly['time'])
+    df['time'] = pd.to_datetime(df['time'])
 
     st.bar_chart(df, y='response_time', x='time')
 
-# Create the
-
-
+# Create the response time line graph
 def http_response(df):
     # set figure and size
     fig, ax = plt.subplots()
@@ -37,52 +33,33 @@ def http_response(df):
     # rotate and align the y label
     plt.ylabel("Response Time (ms)", size=8)
 
-    # start with a line graph of closing price
+    # create the line graph
     ax.plot(df['time'], df['response_time'],
             color='navy',
             linewidth=1)
-
+    
+    # tighten the layout and display
     fig.tight_layout()
     st.pyplot(fig)
 
-
-general_assembly = pd.read_csv("./response_time/generalassemb.ly.csv")
-
-response_time(general_assembly)
-
-st.button("Refresh")
-
-http_response(general_assembly)
+# Create average response time function
+def average_response(df):
+    st.subheader("Average Response Time")
+    response_time_ms = int(np.round(df.iloc[:, 1].mean()))
+    result = f"{response_time_ms} ms"
+    st.write(result)
 
 
-# # Create a DataFrame from the data
-# df = pd.DataFrame(general_assembly)
+# Read in CSV Files
+ga_response_time = pd.read_csv("./response_time/generalassemb.ly.csv")
+ga_response = pd.read_csv('./response/generalassemb.ly.csv')
 
-# # Display the response time data in a table (optional)
-# st.dataframe(df)
+# Call Average Response time Funtion
+average_response(ga_response_time)
 
-# # Dropdown widget to select time frames
-# time_frames = [5, 10, 30, 60]
-# selected_time_frame = st.selectbox('Select Time Frame (minutes)', time_frames)
+# Call the Streamlit bar chart
+response_time(ga_response_time)
+st.button("Refresh") # add in refresh button
 
-# # Create the bar chart using matplotlib
-# fig, ax = plt.subplots()
-# bars = ax.bar(df['time'], df['response_time'], color='skyblue')
-
-# Add labels to the bars
-# for bar in bars:
-#     height = bar.get_height()
-#     ax.annotate(f'{height}', xy=(bar.get_x() + bar.get_width() / 2, height),
-#                 xytext=(0, 3),  # 3 points vertical offset
-#                 textcoords="offset points",
-#                 ha='center', va='bottom')
-
-# plt.xlabel("Time")
-# plt.ylabel("Response Time (ms)")
-# plt.title("Website Response Time")
-# plt.xticks(rotation=45, ha='right')
-
-# # Show the bar chart using st.pyplot()
-# st.pyplot(fig)
-
-# st.button("Refresh")
+# Call matplotlib line graph
+http_response(ga_response_time)
