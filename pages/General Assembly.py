@@ -30,12 +30,14 @@ def http_response(df):
 
     # Assign the x and y label
     plt.xlabel("Time", size=8)
-    # rotate and align the y label
     plt.ylabel("Response Time (ms)", size=8)
 
+    # Rotate the X tick
+    plt.xticks(rotation=25)
+
     # create the line graph
-    ax.plot(df['time'], df['response_time'],
-            color='navy',
+    ax.plot(df.iloc[:, 0], df.iloc[:, 1],
+            color='cyan',
             linewidth=1)
     
     # tighten the layout and display
@@ -54,12 +56,13 @@ def average_response(df):
 ga_response_time = pd.read_csv("./response_time/generalassemb.ly.csv")
 ga_response = pd.read_csv('./response/generalassemb.ly.csv')
 
+
+
 # Call Average Response time Funtion
 average_response(ga_response_time)
 
 # Call the Streamlit bar chart
 response_time(ga_response_time)
-st.button("Refresh") # add in refresh button
 
 # Call matplotlib line graph
 http_response(ga_response_time)

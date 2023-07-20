@@ -79,4 +79,4 @@ while True:
     for website in websites:  # iterate through list
         check_website_status(website)  # call the function
     print("------")
-    time.sleep(60)  # Checks once a minute.
+    time.sleep(300)  # Checks once a minute.

@@ -16,13 +16,10 @@ st.write(
 
 # Create the line plot function
 def response_time(df):
-
     st.title("DataRobot Website Reponse Time")
 
-    # Create bar chart
-    fig, ax = plt.subplots(figsize=(6,3))
-
     # Create line chart
+    fig, ax = plt.subplots(figsize=(6,3))
     ax.plot(df.iloc[:, 0], df.iloc[:, 1], color='orange',
             label='Response Time', marker='o', linewidth=2)
 
@@ -31,10 +28,12 @@ def response_time(df):
     plt.xlabel("Time", color='white', size=10)
     plt.ylabel("Response Time (ms)", color='white', size=10)
     plt.xticks(rotation=25, color='white', ha='right', size=6)
-    plt.yticks(size=6)
+    plt.yticks(size=6, color='white')
     plt.xlim(0, 10)
+    #plt.xlim(0, len(df.iloc[:, 0]))
     plt.style.use("dark_background")
 
+    fig.tight_layout()
     st.pyplot(fig)
 
 # Create average response time function
@@ -55,7 +54,10 @@ def overall_uptime(df):
 datarobot_response_time = pd.read_csv('./response_time/datarobot.com.csv')
 datarobot_response = pd.read_csv('./response/datarobot.com.csv')
 
-# CAll overall uptime function
+# Refresh Button to reload all graphs
+st.button("Reload All") 
+
+# Call overall uptime function
 overall_uptime(datarobot_response)
 
 # Call Average Response time Funtion
@@ -63,4 +65,3 @@ average_response(datarobot_response_time)
 
 # Call matplotlib line graph
 response_time(datarobot_response_time)
-st.button("Refresh") # add in refresh button

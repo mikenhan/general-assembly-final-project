@@ -7,11 +7,18 @@ A website monitoring application that will chart response time and status code r
 2. Run `pip install -r requirements.txt`
 3. Configure the URLs you wish to monitor in data.py
 4. Run `app.py` to start data collection and the streamlit app
-## Features
-- import requests, csv, time, os. from urllib.parse import urlparse
-- create list of websites to check
-- create check website function
-    - try/except.
-    - set variables. start time, response, end time
-    - if else statement to get 200. print results for each.
-    - calculate response time
+## Problem Statements
+- Your problem statement. What is the problem you're trying to solve?
+  - Create a customizable Website monitoring tool. Often times companies will look to have something made in house
+- A brief summary of your solution to the problem. Make this readable so a person without a technical background could understand how you solve the problem! If you can, include why your solution matters. (Brief: somewhere around 4-6 sentences, but this isn't a hard rule.)
+  - I have created a few charts as a demonstration on how response time can be visualized. There are also a few summaries on overall uptime (as a percentage), as wel as the average response time (in ms). 
+- A summary of your technical solution. This can include more technical descriptions of the work you did.
+  - I first started collecting my own data as the free APIs did not provide the information I was looking for. I was able to leverage streamlit to create multiple pages (each website having it's own). Using what we learned on Pandas and Matplotlib, I was able to generate a line graph (with custom configuation). I then created a bar chart that was interactive using Streamlit. 
+- A brief summary of each of the files in your repository.
+  - app.py - This will run the data collection script as well as start streamlit
+  - Home.py - This is the entrypoint (first page) the app will show a user
+  - Data Robot.py - This generates the data robot page
+  - General Assembly.py - This geneartes the GA page
+  - requirements.txt - list of pip requirements to run this app
+- Contact information so people can reach out to you to learn more.
+  - Mike Nhan mike.nhan@gmail.com
