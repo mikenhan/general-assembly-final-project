@@ -22,7 +22,7 @@ st.write(
 def response_time(df):
     st.title("DataRobot Website Reponse Time")
 
-    # Set market to go back
+    # Set to the number of markers you wish to see
     # This can be adjusted as you wish
     markers = 50
 

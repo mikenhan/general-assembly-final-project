@@ -31,7 +31,7 @@ def check_website_status(url):
     try:
         # Gather the response from URL
         response = requests.get(url)  
-        # Convert it into readable ms
+        # Convert from seconds to milliseconds
         response_time = response.elapsed.total_seconds() * 1000
 
         # Print the results of each check to the console
@@ -76,4 +76,4 @@ while True:
     for website in websites:  # iterate through list
         check_website_status(website)  # call the function
     print("------")
-    time.sleep(300)  # Checks every five minute.
+    time.sleep(60)  # Checks every five minute.
