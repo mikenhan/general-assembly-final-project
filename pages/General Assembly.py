@@ -64,7 +64,8 @@ ga_response_time = pd.read_csv("./response_time/generalassemb.ly.csv")
 ga_response = pd.read_csv('./response/generalassemb.ly.csv')
 
 
-
+# --------------- Reload all Graphs ---------------
+st.button("Reload All") 
 # --------------- Call Function for Average Response Time ---------------
 average_response(ga_response_time)
 # --------------- Call Function for Streamlit Bar Graph ---------------

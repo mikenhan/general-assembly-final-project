@@ -24,7 +24,7 @@ def response_time(df):
 
     # Set to the number of markers you wish to see
     # This can be adjusted as you wish
-    markers = 50
+    markers = 30
 
     # Create line chart
     fig, ax = plt.subplots(figsize=(16,8))
