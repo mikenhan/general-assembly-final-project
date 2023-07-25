@@ -11,9 +11,9 @@ A website monitoring application that will chart response time and status code r
 
 ## Starting the Application
 * If on a Linux or Mac system:
-    * Run `nohup streamlit run app.py > streamlit.log 2>&1 &` to start data collection and the streamlit app
+    * Run `nohup streamlit run Home.py > streamlit.log 2>&1 &` to start data collection and the streamlit app
 * If on a Windows system: 
-    * `start "" streamlit run app.py`
+    * `start "" streamlit run Home.py`
 
 
 ## Problem Statements
