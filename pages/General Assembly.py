@@ -44,7 +44,7 @@ def http_response(df):
     plt.xticks(rotation=25)
 
     # create the line graph
-    ax.plot(df.iloc[:, 0].tail(100), df.iloc[:, 1].tail(100),
+    ax.plot(df.iloc[:, 0].tail(20), df.iloc[:, 1].tail(20),
             color='cyan',
             linewidth=1)
     

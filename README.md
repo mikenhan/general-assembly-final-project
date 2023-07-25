@@ -1,12 +1,21 @@
-# PagePulse 
+# PagePulse 📈
 A website monitoring application that will chart response time and status code response.
 ### General Assembly Python Programming - Final Project
+
 
 ## How To Use This
 1. Install Python3.10 for your operating system
 2. Run `pip install -r requirements.txt`
 3. Configure the URLs you wish to monitor in data.py
-4. Run `app.py` to start data collection and the streamlit app
+
+
+## Starting the Application
+* If on a Linux or Mac system:
+    * Run `nohup streamlit run app.py > streamlit.log 2>&1 &` to start data collection and the streamlit app
+* If on a Windows system: 
+    * `start "" streamlit run app.py`
+
+
 ## Problem Statements
 - Your problem statement. What is the problem you're trying to solve?
   - Create a customizable Website monitoring tool. Often times companies will look to have something made in house
