@@ -1,10 +1,3 @@
-'''
-General Assembly - Python Programming
-Instructor: Matt Brems
-Student: Mike Nhan
-Final Project
-July 25, 2023
-'''
 import requests
 import csv
 import time
@@ -34,12 +27,14 @@ if not os.path.isdir(response_time_folder):
 
 # --------------- Function to gather data ---------------
 
-
 def check_website_status(url):
     try:
-        response = requests.get(url)  # gather the response from URL
+        # Gather the response from URL
+        response = requests.get(url)  
+        # Convert it into readable ms
         response_time = response.elapsed.total_seconds() * 1000
 
+        # Print the results of each check to the console
         if response.status_code == 200:
             print(f"{url} is up and running!")  # prints to the terminal
         else:
@@ -48,12 +43,14 @@ def check_website_status(url):
         # Save data to it's own individual CSV file
         domain_name = urlparse(url).netloc
         csv_file_1 = f"{response_time_folder}/{domain_name}.csv"
-        # had to use not. otherwise new file does not add headers
+
+        # Check to see if file does not exists
         response_time_file = not os.path.isfile(csv_file_1)
         # always open in append mode
         with open(csv_file_1, "a", newline='') as file1:
             writer = csv.writer(file1)
-            if response_time_file:  # If file does not exist we will create it with the header row
+            if response_time_file:
+                # If file does not exist we will create it with the header row
                 writer.writerow(['time', 'response_time'])
             # write data to each row
             writer.writerow([time.strftime("%Y-%m-%d %H:%M:%S"),
@@ -79,4 +76,4 @@ while True:
     for website in websites:  # iterate through list
         check_website_status(website)  # call the function
     print("------")
-    time.sleep(300)  # Checks once a minute.
+    time.sleep(300)  # Checks every five minute.

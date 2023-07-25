@@ -3,17 +3,25 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+# --------------- Set Page Configuration  ---------------
 st.set_page_config(page_title="General Assembly", page_icon="🤖")
 
-st.markdown("# General Assembly")
+# --------------- Configure Sidebar Text ---------------
 st.sidebar.header("General Assembly")
+st.sidebar.write("Since 2011, General Assembly has transformed tens of thousands of careers through pioneering, experiential education in today’s most in-demand skills. When you learn web development, data, design, business, and more with GA, you get:")
+st.sidebar.write("Award-winning curriculum and expert instructors, on campus and online.")
+st.sidebar.write("A global, professional community of 40,000-plus full- and part-time alumni.")
+st.sidebar.write("Career results from leading-edge courses, with mentorship each step of the way.")
+
+# --------------- Configure Main Page Text  ---------------
+st.markdown("# General Assembly")
 st.write(
     """
     https://generalassemb.ly
     """
 )
 
-# Create the response time bar chart using Streamlit
+# --------------- Function for Streamlit Bar Graph ---------------
 def response_time(df):
     st.title("General Assembly Website Reponse Time")
     st.text("Scroll to zoom in and out")
@@ -22,7 +30,7 @@ def response_time(df):
 
     st.bar_chart(df, y='response_time', x='time')
 
-# Create the response time line graph
+# --------------- Function for Response Time Line Graph ---------------
 def http_response(df):
     # set figure and size
     fig, ax = plt.subplots()
@@ -36,7 +44,7 @@ def http_response(df):
     plt.xticks(rotation=25)
 
     # create the line graph
-    ax.plot(df.iloc[:, 0], df.iloc[:, 1],
+    ax.plot(df.iloc[:, 0].tail(100), df.iloc[:, 1].tail(100),
             color='cyan',
             linewidth=1)
     
@@ -44,25 +52,22 @@ def http_response(df):
     fig.tight_layout()
     st.pyplot(fig)
 
-# Create average response time function
+# --------------- Function for Line Graph ---------------
 def average_response(df):
     st.subheader("Average Response Time")
     response_time_ms = int(np.round(df.iloc[:, 1].mean()))
     result = f"{response_time_ms} ms"
     st.write(result)
 
-
-# Read in CSV Files
+# --------------- Read in CSV Files ---------------
 ga_response_time = pd.read_csv("./response_time/generalassemb.ly.csv")
 ga_response = pd.read_csv('./response/generalassemb.ly.csv')
 
 
 
-# Call Average Response time Funtion
+# --------------- Call Function for Average Response Time ---------------
 average_response(ga_response_time)
-
-# Call the Streamlit bar chart
+# --------------- Call Function for Streamlit Bar Graph ---------------
 response_time(ga_response_time)
-
-# Call matplotlib line graph
+# --------------- Call Function for Response Time Line Graph ---------------
 http_response(ga_response_time)
