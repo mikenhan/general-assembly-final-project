@@ -1,14 +1,17 @@
 import streamlit as st
 
+# --------------- Set Page Configuration  ---------------
 st.set_page_config(
     page_title="PagePulse",
     page_icon="📈",
 )
 
-st.write("# Welcome to PagePulse! 👋")
-
+# --------------- Configure Sidebar Text ---------------
 st.sidebar.success("Select a site above.")
 
+st.write("# Welcome to PagePulse! 👋")
+
+# --------------- Configure Main Page Text ---------------
 st.markdown(
     """
     PagePulse is a website monitoring and response time website
