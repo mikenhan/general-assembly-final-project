@@ -11,9 +11,18 @@ A website monitoring application that will chart response time and status code r
 
 ## Starting the Application
 * If on a Linux or Mac system:
-    * Run `nohup streamlit run Home.py > streamlit.log 2>&1 &` to start data collection and the streamlit app
-* If on a Windows system: 
-    * `start "" streamlit run Home.py`
+    * run `streamlit run app.py`
+    * Run `nohup streamlit run app.py > streamlit.log 2>&1 &` if you wish to free up your terminal
+* If on a Windows system:
+    * `start streamlit run app.py`
+    * `start "" streamlit run app.py` if you wish to free up your Powershell Terminal
+
+## Explaination of the files
+- app.py will start data collection and the Streamlit app
+- data.py is the data collection script
+- Home.py contains the Streamlit Application Data
+- Files within the pages directory correspond to individual pages in which you are collecting data.
+  - You should modify the names of these files to match the URLs that you are logging
 
 
 ## Problem Statements

@@ -162,3 +162,4 @@ cython_debug/
 # files created when program is run
 response*
 *.csv
+.DS_Store

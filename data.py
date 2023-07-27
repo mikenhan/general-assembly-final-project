@@ -76,4 +76,4 @@ while True:
     for website in websites:  # iterate through list
         check_website_status(website)  # call the function
     print("------")
-    time.sleep(60)  # Checks every five minute.
+    time.sleep(300)  # Checks every five minute. This can be adjusted to your liking
